@@ -1,0 +1,57 @@
+<div class="container">
+<legend> SIGN UP FORM</legend>
+<!-- <fieldset ng-controller = "SignUpController as signup"> -->
+<fieldset>
+<form name = "signUpForm" novalidate>
+  <input type="text" name="name"
+  placeholder="Your First Name"
+  ng-model = "signup.name"
+  required>
+    <span
+    ng-if = "signUpForm.name.$error.required && signUpForm.name.$touched">
+    First Name is required!
+    </span>
+  <br>
+  <input type="text" name="lastname"
+  placeholder="Your Last Name"
+  ng-model = "signup.lastname"
+  required>
+    <span
+    ng-if = "signUpForm.lastname.$error.required && signUpForm.lastname.$touched">
+    Last Name is required!
+  </span>
+  <br>
+  <input type="email" name="email" placeholder="Email"
+  ng-model="signup.email"
+  required>
+    <span ng-if="signUpForm.email.$invalid && signUpForm.email.$touched">
+      Must be a valid email address: handle@domain format
+    </span>
+  <br>
+  <input type="text" name="phone" placeholder="Phone ###-###-####"
+  ng-model="signup.phone"
+  pattern="(\d{3})-(\d{3})-(\d{4})">
+    <span ng-if="signUpForm.phone.$invalid && signUpForm.phone.$touched">
+      Phone must be in the format ###-###-####.
+    </span>
+  <br>
+  <input type="text" name="favitem" placeholder="Your Favorite Menu Number"
+  ng-model="signup.favitem"
+  required>
+  <span
+  ng-if = "signUpForm.favitem.$error.required && signUpForm.favitem.$touched">
+  Your favorite menu item is required!
+  </span>
+  <br>
+
+  <button ng-disabled="signUpForm.$invalid"
+  ng-click = "signup.submit();">
+     SUBMIT
+  </button>
+</form>
+
+<div class="regresult" ng-if="signup.completed">
+  Your information has been saved!
+</div>
+</fieldset>
+</div>

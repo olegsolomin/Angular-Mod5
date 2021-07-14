@@ -183,3 +183,40 @@ h3.menu-item-title {
     width: 100%;
   }
 }
+/********* Sign-Up *******************/
+.ng-touched.ng-valid {
+  border: 2px green solid;
+}
+
+.ng-touched.ng-invalid {
+  border: 2px red solid;
+}
+input {
+  color: #3F0C1F;
+  border-radius: 4px;
+  margin-top: 5px;
+  width: 300px;
+}
+button {
+  background-color: #3F0C1F;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+legend {
+  color: white;
+}
+.regresult {
+  font-size: 1.2em;
+  margin-top: 20px;
+}
+
+#myInfoList {
+  color: #3F0C1F;
+  width: auto;
+}
+
+#badge {
+  background-color: #3F0C1F;
+  font-size: 1.2em;
+}
