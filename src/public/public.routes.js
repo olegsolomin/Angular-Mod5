@@ -49,12 +49,12 @@ function routeConfig ($stateProvider) {
     .state('public.myinfo', {
       url: '/my-info/',
       templateUrl: 'src/public/sign-up/myinfo.html',
-      controller: 'MyInfoController as myInfo',
-      resolve: {
-        favitem: ['SignUpService', function (SignUpService) {
-          return SignUpService.getfavitem();
-        }]
-      }
+      controller: 'MyInfoController as myInfo'
+      // resolve: {
+      //   faviteminfo: ['$stateParams','SignUpService', function ($stateParams, SignUpService) {
+      //     return SignUpService.getfavitem($stateParams.favitem);
+      //   }]
+      // }
     })
 }
 })();
