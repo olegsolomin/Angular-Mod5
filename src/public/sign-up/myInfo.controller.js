@@ -9,10 +9,14 @@ function MyInfoController(SignUpService) {
 
   var myInfo = this;
   myInfo.persons = SignUpService.showInfo();
-  // myInfo.item = SignUpService.getfavitem(favitem);
+  var promise = SignUpService.getfavitem(myInfo.persons[0].favitem);
+  promise.then (function (response) {
+    myInfo.item = response.data;
+  });
+
 
   myInfo.IsEmpty = function () {
-     if (myInfo.persons.length === 0) {
+     if (myInfo.persons.length === 0 | myInfo.persons === undefined) {
        return true;
    }
  }

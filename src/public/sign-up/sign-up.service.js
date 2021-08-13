@@ -20,7 +20,7 @@ function SignUpService($http,ApiBasePath) {
     };
     persons.push(person);
   };
-  
+
   service.showInfo = function () {
     return persons;
   };
