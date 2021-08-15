@@ -15,9 +15,17 @@ function SignUpController(SignUpService) {
   signup.favitem = "";
 
   signup.submit = function () {
-    SignUpService.submit( signup.name, signup.lastname,
-    signup.email, signup.phone, signup.favitem);
-    signup.completed = true;
+    try{
+      var promise = SignUpService.getfavitem(signup.favitem);
+      promise.then (function (response) {
+          signup.item = response.data;
+      });
+      SignUpService.submit( signup.name, signup.lastname,
+      signup.email, signup.phone, signup.favitem);
+      signup.completed = true;
+    } catch (e) {
+      signup.error = true;
+    }
   }
 }
 })();

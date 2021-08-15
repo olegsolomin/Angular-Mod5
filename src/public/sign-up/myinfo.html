@@ -3,9 +3,9 @@
 <fieldset>
 <!-- <fieldset ng-controller = "MyInfoController as myInfo"> -->
 
-  <span ng-hide="myInfo.IsEmpty()"><h4>Not Signed Up Yet.
+  <span ng-if="myInfo.IsEmpty()"><h4>Not Signed Up Yet.
     <a ui-sref="public.signup"> Sign up Now!</a></h4></span>
-<ul ng-show="myInfo.IsEmpty()" class="list-group" id = "myInfoList">;
+<ul ng-if="!myInfo.IsEmpty()" class="list-group" id = "myInfoList">;
   <li class="list-group-item">First Name: {{myInfo.persons[0].name}} </li>
   <li class="list-group-item">Last Name: {{myInfo.persons[0].lastname}}</li>
   <li class="list-group-item">Email: {{myInfo.persons[0].email}}</li>
@@ -13,7 +13,7 @@
   <li class="list-group-item">Favorite Menu Item: {{myInfo.persons[0].favitem}}</li>
 </ul>
 
-<div ng-show="myInfo.IsEmpty()"  class="card">
+<div ng-if="myInfo.IsEmpty()"  class="card">
   <img src = "https://son-angular-mod5.herokuapp.com/images/{{myInfo.persons[0].favitem}}.json">
   <div class="card-body">
     <h5 class="card-title">{{myInfo.item.name}}

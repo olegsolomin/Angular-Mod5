@@ -24,25 +24,34 @@
   <input type="email" name="email" placeholder="Email"
   ng-model="signup.email"
   required>
-    <span ng-if="signUpForm.email.$invalid && signUpForm.email.$touched">
+    <span ng-if="signUpForm.email.$invalid && signUpForm.email.$touched
+    || signUpForm.email.$error.pattern">
       Must be a valid email address: handle@domain format
     </span>
   <br>
   <input type="text" name="phone" placeholder="Phone ###-###-####"
   ng-model="signup.phone"
-  pattern="(\d{3})-(\d{3})-(\d{4})">
-    <span ng-if="signUpForm.phone.$invalid && signUpForm.phone.$touched">
+  pattern="(\d{3})-(\d{3})-(\d{4})"
+  required>
+    <span ng-if="signUpForm.phone.$invalid && signUpForm.phone.$touched
+    || signUpForm.phone.$error.pattern">
       Phone must be in the format ###-###-####.
     </span>
   <br>
-  <input type="text" name="favitem" placeholder="Your Favorite Menu Number"
+  <input type="text" name="favitem" placeholder="Your Favorite Menu Number (e.g. L4)"
   ng-model="signup.favitem"
+  pattern="[A-Z]{1,2}\d{1,2}\b"
   required>
   <span
-  ng-if = "signUpForm.favitem.$error.required && signUpForm.favitem.$touched">
-  Your favorite menu item is required!
+  ng-if = "signUpForm.favitem.$error.required &&
+  signUpForm.favitem.$touched || signUpForm.favitem.$error.pattern">
+  Try another BLOCK letter (max 2) and figure (1-99)
   </span>
   <br>
+  <div ng-show="signup.error">
+  No such menu number exists!
+  </div>
+
 
   <button ng-disabled="signUpForm.$invalid"
   ng-click = "signup.submit();">
