@@ -18,8 +18,7 @@ function MyInfoController(SignUpService) {
 
   myInfo.IsEmpty = function () {
      if (
-       myInfo.persons[0] === undefined ||
-     myInfo.item === undefined) {
+       myInfo.persons[0] === undefined) {
        return true;
    }
  }

@@ -18,14 +18,32 @@ function SignUpController(SignUpService) {
     try{
       var promise = SignUpService.getfavitem(signup.favitem);
       promise.then (function (response) {
-          signup.item = response.data;
-      });
-      SignUpService.submit( signup.name, signup.lastname,
-      signup.email, signup.phone, signup.favitem);
-      signup.completed = true;
+        signup.item = response.data;
+       });
     } catch (e) {
       signup.error = true;
+    };
+    if (signup.item === undefined) {
+      signup.error = true;
     }
-  }
+     else {
+       SignUpService.submit (signup.name, signup.lastname,
+       signup.email, signup.phone, signup.favitem);
+       signup.completed = true;
+     }
+    }
+    // try-catch
+    // try{
+    //   var promise = SignUpService.getfavitem(signup.favitem);
+    //   promise.then (function (response) {
+    //       signup.item = response.data;
+    //   });
+    //   SignUpService.submit( signup.name, signup.lastname,
+    //   signup.email, signup.phone, signup.favitem);
+    //   signup.completed = true;
+    // } catch (e) {
+    //   signup.error = true;
+    // }
+  // }
 }
 })();
