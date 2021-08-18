@@ -14,22 +14,29 @@ function SignUpController(SignUpService) {
   signup.phone = "";
   signup.favitem = "";
 
-  signup.submit = function () {
-    try{
-      var promise = SignUpService.getfavitem(signup.favitem);
-      promise.then (function (response) {
-        signup.item = response.data;
-       });
-    } catch (e) {
+  signup.checkItem = function (favitem) {
+  try {
+    var promise = SignUpService.checkitem(favitem);
+    promise.then (function (response) {
+      signup.item = response.data;
+    });
+  } catch (e) {
       signup.error = true;
     };
-    if (signup.item === undefined) {
-      signup.error = true;
-    }
-     else {
-       SignUpService.submit (signup.name, signup.lastname,
-       signup.email, signup.phone, signup.favitem);
-       signup.completed = true;
+  };
+
+  signup.submit = function () {
+    var promise = signup.checkItem(signup.favitem);
+
+    promise.
+    then (function (response) {
+      SignUpService.submit (signup.name, signup.lastname,
+      signup.email, signup.phone, signup.favitem);
+      signup.completed = true;
+    }).catch (function (errorResponse) {
+      signup.completed = false;
+    })
+
      }
     }
     // try-catch
@@ -45,5 +52,4 @@ function SignUpController(SignUpService) {
     //   signup.error = true;
     // }
   // }
-}
 })();
