@@ -16,7 +16,7 @@ function SignUpController(SignUpService) {
 
   signup.checkItem = function (favitem) {
   try {
-    var promise = SignUpService.checkitem(favitem);
+    var promise = SignUpService.checkitem(signup.favitem);
     promise.then (function (response) {
       signup.item = response.data;
     });
@@ -25,9 +25,8 @@ function SignUpController(SignUpService) {
     };
   };
 
-  signup.submit = function () {
+  signup.submit = function (favitem) {
     var promise = signup.checkItem(signup.favitem);
-
     promise.
     then (function (response) {
       SignUpService.submit (signup.name, signup.lastname,
