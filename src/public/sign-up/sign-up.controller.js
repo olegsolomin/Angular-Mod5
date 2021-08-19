@@ -14,9 +14,10 @@ function SignUpController(SignUpService) {
   signup.phone = "";
   signup.favitem = "";
 
+
   signup.checkItem = function (favitem) {
   try {
-    var promise = SignUpService.checkItem(signup.favitem);
+    var promise = SignUpService.getfavitem(signup.favitem);
     promise.then (function (response) {
       signup.item = response.data;
     });
