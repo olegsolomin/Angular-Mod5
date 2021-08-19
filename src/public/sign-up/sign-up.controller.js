@@ -21,6 +21,7 @@ function SignUpController(SignUpService) {
       SignUpService.submit (signup.name, signup.lastname,
       signup.email, signup.phone, signup.favitem);
       signup.completed = true;
+      signup.error = false;
     }).catch (function (errorResponse) {
       signup.error = true;
     })
