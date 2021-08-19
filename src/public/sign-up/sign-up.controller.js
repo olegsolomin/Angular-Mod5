@@ -14,42 +14,17 @@ function SignUpController(SignUpService) {
   signup.phone = "";
   signup.favitem = "";
 
-
-  signup.checkItem = function (favitem) {
-  try {
-    var promise = SignUpService.getfavitem(signup.favitem);
-    promise.then (function (response) {
-      signup.item = response.data;
-    });
-  } catch (e) {
-      signup.error = true;
-    };
-  };
-
   signup.submit = function (favitem) {
-    var promise = signup.checkItem(signup.favitem);
+    var promise = SignUpService.getfavitem(signup.favitem);
     promise.
     then (function (response) {
       SignUpService.submit (signup.name, signup.lastname,
       signup.email, signup.phone, signup.favitem);
       signup.completed = true;
     }).catch (function (errorResponse) {
-      signup.completed = false;
+      signup.error = true;
     })
 
      }
     }
-    // try-catch
-    // try{
-    //   var promise = SignUpService.getfavitem(signup.favitem);
-    //   promise.then (function (response) {
-    //       signup.item = response.data;
-    //   });
-    //   SignUpService.submit( signup.name, signup.lastname,
-    //   signup.email, signup.phone, signup.favitem);
-    //   signup.completed = true;
-    // } catch (e) {
-    //   signup.error = true;
-    // }
-  // }
 })();
